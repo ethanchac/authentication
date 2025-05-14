@@ -1,40 +1,13 @@
-import { useState } from 'react';
-import axios from 'axios';
+import {Link} from 'react-router-dom';
 
-function App() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
 
-  const handleSignup = async () => {
-    try {
-      const res = await axios.post('http://localhost:5000/api/auth/signup', {
-        email,
-        password,
-      });
-      alert('Signed up! Token: ' + res.data.token);
-    } catch (err) {
-      console.error(err.response?.data || err.message);
-      alert('Signup failed');
-    }
-  };
-
+function App(){
   return (
     <>
-      <input
-        type="text"
-        placeholder="Email"
-        value={email}
-        onChange={e => setEmail(e.target.value)}
-      />
-      <input
-        type="password"
-        placeholder="Password"
-        value={password}
-        onChange={e => setPassword(e.target.value)}
-      />
-      <button onClick={handleSignup}>Sign up</button>
+      <Link to="/login">Log in</Link>
+      <Link to="/signup">Sign up</Link>
     </>
-  );
+  )
 }
 
 export default App;
