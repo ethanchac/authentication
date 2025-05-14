@@ -1,10 +1,11 @@
 import { useState } from 'react'
 import axios from 'axios';
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 function Login(){
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const navigate = useNavigate();
     
     const handleClick = async () => {
         try{
@@ -13,6 +14,9 @@ function Login(){
                 password
             });
             alert("loged in");
+            localStorage.setItem('token', res.data.token);
+
+            navigate('/enter');
         }catch(err){
             alert('error');
         }
