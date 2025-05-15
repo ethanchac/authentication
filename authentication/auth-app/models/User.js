@@ -12,6 +12,14 @@ const UserSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    favouriteColours: {
+        type: [String],
+        default: [],
+    },
+    selectedColor: {
+        type: String,
+        default: '',
+    },
     createdAt: {
         type: Date,
         default: Date.now,
